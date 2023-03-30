@@ -1,0 +1,2 @@
+gcc 4.c -o 4.exe -lm
+gcc ./4.exe

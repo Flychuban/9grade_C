@@ -1,0 +1,5 @@
+gcc -c maths.c
+ar rcs libmaths.a maths.o
+pwd
+gcc 5.c -LC:\Users\sas\Desktop\Programirane\compilation_uprazhnenie -lmaths -o 5.exe
+./5.exe

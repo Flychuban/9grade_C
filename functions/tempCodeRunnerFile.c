@@ -1,0 +1,1 @@
+ char str1[maxbr], str2[maxbr], *p;
