@@ -7,4 +7,4 @@ dynarr.o: dynarr.h dynarr.c
 	gcc -c dynarr.c -o dynarr.o
 
 clean:
-	rm -f *.exe *.o
+	del *.exe *.o

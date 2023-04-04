@@ -40,5 +40,7 @@ int main(void)
 
     pop(&arr, 4);
     printdynarr(&arr);
+
+    releasedynarr(&arr);
     return 0;
 }
