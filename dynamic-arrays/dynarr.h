@@ -3,31 +3,33 @@
 
 typedef struct
 {
-    int *buffer;
+    double *buffer;
     unsigned int capacity;
     unsigned int size;
 } DynamicArray;
 
 DynamicArray init(unsigned int capacity);
 
-int getel(DynamicArray *arr, int index);
+double getel(DynamicArray *arr, int index);
 
-void setel(DynamicArray *arr, int index, int value);
+void setel(DynamicArray *arr, int index, double value);
 
-void pushback(DynamicArray *arr, int value);
+void pushback(DynamicArray *arr, double value);
 
-int popback(DynamicArray *arr);
+double popback(DynamicArray *arr);
 
-void push(DynamicArray *arr, int index, int value);
+void push(DynamicArray *arr, int index, double value);
 
-void pushfront(DynamicArray *arr, int value);
+void pushfront(DynamicArray *arr, double value);
 
 // For homework
 void pop(DynamicArray *arr, int index);
 
 // For homework
-int popfront(DynamicArray *arr);
+double popfront(DynamicArray *arr);
 
 void releasedynarr(DynamicArray *arr);
+
+int findelement(DynamicArray *arr, double value);
 
 #endif
