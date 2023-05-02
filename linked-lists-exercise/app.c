@@ -32,9 +32,16 @@ void print_all_activities(LinkedList *list)
 
 void quit(LinkedList *list)
 {
-    if (list != NULL)
+    if (list->head != NULL)
     {
-        free(list)
+        struct ListNode *current_node = list->head;
+        while (current_node != NULL)
+        {
+            struct ListNode *next_node = current_node->next;
+            free(current_node);
+            current_node = next_node;
+        }
+        
     }
     list->head = NULL;
     list->size = 0;

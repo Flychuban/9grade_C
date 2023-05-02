@@ -22,7 +22,7 @@ LinkedList init()
 
 struct ListNode *get(LinkedList *list, int index)
 {
-    if (index < 1 || index > list->size)
+    if (index < 1 || index + 1 > list->size)
     {
         return NULL;
     }
