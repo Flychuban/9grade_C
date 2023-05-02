@@ -6,9 +6,10 @@
 void print_all_activities(LinkedList *list)
 {
     struct ListNode *current_node = list->head;
+    int i=1;
     while (current_node != NULL)
     {
-        printf("%d. ", current_node->proccess_info.proccess_number);
+        printf("%d. ", i);
         printf("%s ", current_node->proccess_info.proccess_name);
         if (current_node->proccess_info.status == NEW)
         {
@@ -24,29 +25,36 @@ void print_all_activities(LinkedList *list)
         }
         printf("\n");
         current_node = current_node->next;
+        i++;
     }
     printf("\n");
 }
 
 void quit(LinkedList *list)
 {
+    if (list != NULL)
+    {
+        free(list)
+    }
+    list->head = NULL;
+    list->size = 0;
     printf("\nExit!");
-    // release(list);
 }
 
 void add_activity(LinkedList *list)
 {
     struct ProccessInfo new_proccess_info;
     char *p;
+    int index;
     printf("\nEnter new activity number: ");
-    scanf("%d", &new_proccess_info.proccess_number);
+    scanf("%d", &index);
     getchar();
     printf("\nEnter new activity name: ");
     fgets(new_proccess_info.proccess_name, 30, stdin);
     if(p = strchr(new_proccess_info.proccess_name, '\n'))
         *p = '\0';
     new_proccess_info.status = NEW;
-    push(list, new_proccess_info);
+    push(list, new_proccess_info, index);
 }
 
 void remove_activity(LinkedList *list)

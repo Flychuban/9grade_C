@@ -34,26 +34,31 @@ struct ListNode *get(LinkedList *list, int index)
     return currentnode;
 }
 
-void push(LinkedList *list, struct ProccessInfo proccess_info)
+void push(LinkedList *list, struct ProccessInfo proccess_info, int index)
 {
-    if (proccess_info.proccess_number == 1)
+    if (index == 1)
     {
         pushfront(list, proccess_info);
+        printf("\nSize in push if:%d", list->size);
     }
-    else if(proccess_info.proccess_number > list -> size){
-        proccess_info.proccess_number = list -> size + 1;
-        struct ListNode *prev = get(list, proccess_info.proccess_number - 1);
+    else if(index > list -> size){
+        printf("\nin else if");
+        printf("\n%d", list->size);
+        struct ListNode *prev = get(list, list->size);
         struct ListNode *newnode = createnode(proccess_info);
+        printf("\nHere");
         newnode->next = prev->next;
         prev->next = newnode;
-        list->size++;
+        list->size = list->size + 1;
     }
     else{
-        struct ListNode *prev = get(list, proccess_info.proccess_number - 1);
+        printf("\nelse");
+        printf("\nsize in else:%d", list -> size);
+        struct ListNode *prev = get(list, index - 1);
         struct ListNode *newnode = createnode(proccess_info);
         newnode->next = prev->next;
         prev->next = newnode;
-        list->size++;
+        list->size = list->size + 1;
     }
 }
 
@@ -62,7 +67,8 @@ void pushfront(LinkedList *list, struct ProccessInfo proccess_info)
     struct ListNode *newnode = createnode(proccess_info);
     newnode->next = list->head;
     list->head = newnode;
-    list->size++;
+    list->size = list->size + 1;
+    printf("\nSize in pushfront:%d", list->size);
 }
 
 void pop(LinkedList *list, int index){
@@ -87,8 +93,8 @@ void popfront(LinkedList *list){
     free(nodetodelete);
 }
 
-void setStatus(LinkedList *list, struct ProccessInfo proccess_info, enum Status new_status)
+void setStatus(LinkedList *list, struct ProccessInfo proccess_info, enum Status new_status, int index)
 {
-    struct ListNode *node = get(list, proccess_info.proccess_number);
+    struct ListNode *node = get(list, index);
     node->proccess_info.status = new_status;
 }
