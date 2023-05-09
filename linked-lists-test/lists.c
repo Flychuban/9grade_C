@@ -1,6 +1,5 @@
-#include "linkedlist.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include "lists.h"
 
 static struct ListNode *createnode(double value)
 {
@@ -36,49 +35,12 @@ struct ListNode *get(LinkedList *list, int index)
     return currentnode;
 }
 
-void push(LinkedList *list, int index, double value)
-{
-    if (index == 0)
-    {
-        pushfront(list, value);
-        return;
-    }
-
-    struct ListNode *prev = get(list, index - 1);
-    struct ListNode *newnode = createnode(value);
-    newnode->next = prev->next;
-    prev->next = newnode;
-    list->size++;
-}
-
-void pushback(LinkedList *list, double value)
-{
-    push(list, list->size, value);
-}
-
 void pushfront(LinkedList *list, double value)
 {
     struct ListNode *newnode = createnode(value);
     newnode->next = list->head;
     list->head = newnode;
     list->size++;
-}
-
-double pop(LinkedList *list, int index)
-{
-    if (index == 0)
-    {
-        return popfront(list);
-    }
-
-    struct ListNode *prev = get(list, index - 1);
-    struct ListNode *nodetodelete = prev->next;
-    prev->next = nodetodelete->next;
-    list->size--;
-
-    double result = nodetodelete->value;
-    free(nodetodelete);
-    return result;
 }
 
 double popfront(LinkedList *list)
@@ -92,11 +54,6 @@ double popfront(LinkedList *list)
     return result;
 }
 
-double popback(LinkedList *list)
-{
-    return pop(list, list->size - 1);
-}
-// 
 void set(LinkedList *list, int index, double value)
 {
     struct ListNode *node = get(list, index);

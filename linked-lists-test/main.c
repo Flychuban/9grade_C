@@ -1,7 +1,6 @@
 #include "linkedlist.h"
 #include <stdio.h>
 
-// 
 void printlinkedlist(LinkedList *list)
 {
     struct ListNode *currentnode = list->head;
@@ -27,22 +26,8 @@ int main(void)
     struct ListNode *el3 = get(&list, 2);
     printf("Element 3: %lf \n", el3->value);
 
-    push(&list, 1, 11);
-    printlinkedlist(&list);
-
-    pushback(&list, 13);
-    printlinkedlist(&list);
-
     double firstel = popfront(&list);
     printf("First element %lf \n", firstel);
-    printlinkedlist(&list);
-
-    double secondelement = pop(&list, 1);
-    printf("Second element %lf \n", secondelement);
-    printlinkedlist(&list);
-
-    double lastelement = popback(&list);
-    printf("Last element %lf \n", lastelement);
     printlinkedlist(&list);
 
     set(&list, 2, 17);

@@ -7,4 +7,4 @@ tests.exe: tests.c linkedlist.o
 	gcc tests.c linkedlist.o -o tests.exe
 
 clean:
-	del *.o *.exe
+	# del *.o *.exe
