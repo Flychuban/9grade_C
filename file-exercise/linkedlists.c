@@ -11,7 +11,11 @@ static struct BookInfo *createnode(struct BookInfo book)
         printf("Error allocating memory \n");
         exit(1);
     }
-    strcpy(book.title, newnode->title);
+    strcpy(newnode->title, book.title);
+    strcpy(newnode->author, book.author);
+    strcpy(newnode->esbn_number, book.esbn_number);
+    strcpy(newnode->genre, book.genre);
+    newnode->year_published = book.year_published;
     return newnode;
 }
 
