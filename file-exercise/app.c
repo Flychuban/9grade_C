@@ -88,8 +88,12 @@ void add_book(LinkedList *list)
 void remove_book(LinkedList *list)
 {
     char esbn_number[10];
+    char *p;
+    getchar();
     printf("\nEnter ESBN number to remove: ");
     fgets(esbn_number, 10, stdin);
+    if (p = strchr(esbn_number, '\n'))
+        *p = '\0';
     pop(list, esbn_number);
     printf("\nRemoved book!");
 }
@@ -107,16 +111,25 @@ int main()
     }
 
     int i = 0;
-    while (fscanf(textFile, "%d\n", &book.year_published) != EOF)
+    char *p;
+    while (fscanf(textFile, "%d", &book.year_published) != EOF)
     {
+        fscanf(textFile, "\n");
         fgets(book.title, 100, textFile);
+        if(p = strchr(book.title, '\n'))
+            *p = '\0';
         fscanf(textFile, "\n");
         fgets(book.author, 30, textFile);
+        if(p = strchr(book.author, '\n'))
+            *p = '\0';
         fscanf(textFile, "\n");
         fgets(book.genre, 30, textFile);
+        if(p = strchr(book.genre, '\n'))
+            *p = '\0';
         fscanf(textFile, "\n");
         fgets(book.esbn_number, 10, textFile);
-        fscanf(textFile, "\n");
+        if(p = strchr(book.esbn_number, '\n'))
+            *p = '\0';
         fscanf(textFile, "\n");
         push(&list, book, i);
         i++;   
