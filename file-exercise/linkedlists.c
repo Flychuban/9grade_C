@@ -60,17 +60,29 @@ void push(LinkedList *list, struct BookInfo book, int index)
 void pop(LinkedList *list, char esbn_number[10])
 {
     struct BookInfo *current_node = list->head;
+    int i = 0;
     while (current_node != NULL)
     {
         if (strcmp(current_node->next->esbn_number, esbn_number) == 0)
         {
+            if (i == 0)
+            {
+                struct BookInfo *nodetodelete = list->head;
+                list->head = list->head->next;
+                list->size--;
+                free(nodetodelete);
+                printf("\nSuccessfully removed book!");
+                break;
+            }
             struct BookInfo *prev = current_node;
             struct BookInfo *nodetodelete = prev->next;
             prev->next = nodetodelete->next;
             list->size--;
             free(nodetodelete);
+            printf("\nSuccessfully removed book!");
             break;
         }
+        i++;
         current_node = current_node->next;
     }
 }
