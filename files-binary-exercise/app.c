@@ -142,7 +142,6 @@ void remove_person(LinkedList *list, char *fileName)
     printf("\nEnter ID number to remove: ");
     scanf("%d", &ID_to_remove);
     pop(list, ID_to_remove);
-    printf("\nSuccessfully removed person!");
 
     save_file_changes(list, fileName);
 }

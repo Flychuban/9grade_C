@@ -59,21 +59,36 @@ void push(LinkedList *list, struct PersonInfo person, int index)
     list->size++;
 }
 
-void pop(LinkedList *list, int ID)
+void pop(LinkedList *list, int ID_to_remove)
 {
     struct PersonInfo *current_node = list->head;
+    int i = 0;
     while (current_node != NULL)
     {
-        if (current_node->next->ID == ID)
+        if (current_node->ID == ID_to_remove)
         {
+            if (i == 0){
+                struct PersonInfo *nodetodelete = list->head;
+                list->head = list->head->next;
+                list->size--;
+                free(nodetodelete);
+                printf("\nSuccessfully removed person!");
+                break;
+            }
             struct PersonInfo *prev = current_node;
             struct PersonInfo *nodetodelete = prev->next;
             prev->next = nodetodelete->next;
             list->size--;
             free(nodetodelete);
+            printf("\nSuccessfully removed person!");
             break;
         }
+        i++;
         current_node = current_node->next;
+    }
+    if (current_node == NULL)
+    {
+        printf("\nPerson not found!");
     }
 }
 
