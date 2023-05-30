@@ -1,31 +1,31 @@
 #ifndef LINKEDLISTS_H
 #define LINKEDLISTS_H
 
-typedef enum{
+enum Education{
     NOEDUCATION,
     PRIMARY,
     SECONDARY,
     MASTER
-} education;
+};
 
-typedef enum{
+enum Family{
     SINGLE,
     MARRIED
-} family;
+};
 
-typedef enum{
+enum Work{
     UNEMPLOYED,
     WORKING
-} work;
+};
 
 
 struct PersonInfo{
     int ID;
     int age;
     char name[255];
-    education;
-    family;
-    work;
+    enum Education education;
+    enum Family family;
+    enum Work work;
     struct PersonInfo *next;
 };
 
