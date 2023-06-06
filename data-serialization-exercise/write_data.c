@@ -6,7 +6,8 @@ struct Employee
     char name[100];
     int number_employees;
     struct Employee **employees;
-}
+};
+
 
 int main(){
     struct Employee director = {"Ivan", 2, NULL};
@@ -43,17 +44,27 @@ int main(){
     for (int i = 0; i < director.number_employees; i++)
     {
         char *cur_man_name = director.employees[i]->name;
-        char *cur_man_number_employees = director.employees[i]->number_employees;
+        int cur_man_number_employees = director.employees[i]->number_employees;
         fwrite(&cur_man_name, sizeof(char), 100, fp);
         fwrite(&cur_man_number_employees, sizeof(int), 1, fp);
         for (int j = 0; j < cur_man_number_employees; j++)
         {
             char *cur_emp_name = director.employees[i]->employees[j]->name;
-            char *cur_emp_number_employees = director.employees[i]->employees[j]->number_employees;
+            int cur_emp_number_employees = director.employees[i]->employees[j]->number_employees;
             fwrite(&cur_emp_name, sizeof(char), 100, fp);
             fwrite(&cur_emp_number_employees, sizeof(int), 1, fp);
         }   
     }
+
+    for (int i = 0; i < director.number_employees; i++)
+    {
+        if (director.employees[i] != NULL)
+        {
+            free(director.employees[i]);        
+        }
+    }
+    free(director.employees);
+    
     
     fclose(fp);
 
