@@ -58,12 +58,22 @@ int main(){
 
     for (int i = 0; i < director.number_employees; i++)
     {
-        if (director.employees[i] != NULL)
+        int cur_man_number_employees = director.employees[i]->number_employees;
+        for (int j = 0; j < cur_man_number_employees; j++)
         {
-            free(director.employees[i]);        
+            if (director.employees[i]->employees[j]->employees != NULL)
+            {
+                free(director.employees[i]->employees[j]->employees);        
+            }
         }
+        
+        free(director.employees[i]->employees);
     }
-    free(director.employees);
+
+    if (director.employees != NULL)
+    {
+        free(director.employees);
+    }
     
     
     fclose(fp);
