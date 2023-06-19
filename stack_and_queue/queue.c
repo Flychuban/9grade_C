@@ -97,10 +97,7 @@ void dequeue(struct Queue *queue){
 
 void printQueue(struct Queue *queue){
     struct Node *currentnode = queue->list.head;
-    // while (currentnode != NULL){
-    //     printf("%lf ", currentnode->value);
-    //     currentnode = currentnode->next;
-    // }
+
 
     for (int i = 0; i < queue->list.size; i++)
     {
@@ -119,7 +116,6 @@ int main(){
     enqueue(&queue, 3);
     
     dequeue(&queue);
-
     printQueue(&queue);
 
     return 0;
