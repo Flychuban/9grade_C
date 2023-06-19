@@ -40,6 +40,7 @@ struct Stack stack_init()
 {
     struct LinkedList linked_list = init();
     struct Stack stack = {list : linked_list};
+    return stack;
 }
 
 struct Node *get(struct LinkedList *list, int index)
