@@ -97,6 +97,8 @@ int main()
     push(&stack, 8);
     push(&stack, 15);
 
+    pop(&stack);
+
     printlinkedlist(&stack);
     return 0;
 }

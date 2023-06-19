@@ -47,7 +47,7 @@ struct Node *get(struct LinkedList *list, int index){
     }
     if (index <= list->size / 2)
     {
-        struct ListNode *currentnode = list->head;
+        struct Node *currentnode = list->head;
         for (int i = 0; i < index; i++)
         {
             currentnode = currentnode->next;
@@ -56,7 +56,7 @@ struct Node *get(struct LinkedList *list, int index){
     }
     else
     {
-        struct ListNode *currentnode = list->tail;
+        struct Node *currentnode = list->tail;
         for (int i = list->size - 1; i > index; i--)
         {
             currentnode = currentnode->prev;
@@ -65,11 +65,62 @@ struct Node *get(struct LinkedList *list, int index){
     }
 }
 
+void pushback(struct LinkedList *list, double value){
+    struct Node *newnode = createnode(value);
+    if (list->size == 0){
+        list->head = newnode;
+        list->tail = newnode;
+    }
+    else{
+        newnode->prev = list->tail;
+        list->tail->next = newnode;
+        list->tail = newnode;
+    }
+    list->size++;
+}
+
+void popfront(struct LinkedList *list){
+    struct Node *newhead = list->head->next;
+    free(list->head);
+    list->head = newhead;
+    list->size--;
+}
+
+
+void enqueue(struct Queue *queue, double value){
+    pushback(&queue->list, value);
+}
+
+void dequeue(struct Queue *queue){
+    popfront(&queue->list);
+}
+
+void printQueue(struct Queue *queue){
+    struct Node *currentnode = queue->list.head;
+    // while (currentnode != NULL){
+    //     printf("%lf ", currentnode->value);
+    //     currentnode = currentnode->next;
+    // }
+
+    for (int i = 0; i < queue->list.size; i++)
+    {
+        printf("%lf ", currentnode->value);
+        currentnode = currentnode->next;
+    }
+    
+    printf("\n");
+}
+
+
 int main(){
     struct Queue queue = queue_init();
     enqueue(&queue, 1);
     enqueue(&queue, 2);
     enqueue(&queue, 3);
     
+    dequeue(&queue);
+
+    printQueue(&queue);
+
     return 0;
 }
