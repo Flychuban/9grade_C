@@ -40,31 +40,6 @@ struct Node *createnode(double value){
     return newnode;
 }
 
-struct Node *get(struct LinkedList *list, int index){
-    if (index < 0 || index >= list->size)
-    {
-        return NULL;
-    }
-    if (index <= list->size / 2)
-    {
-        struct Node *currentnode = list->head;
-        for (int i = 0; i < index; i++)
-        {
-            currentnode = currentnode->next;
-        }
-        return currentnode;
-    }
-    else
-    {
-        struct Node *currentnode = list->tail;
-        for (int i = list->size - 1; i > index; i--)
-        {
-            currentnode = currentnode->prev;
-        }
-        return currentnode;
-    }
-}
-
 void pushback(struct LinkedList *list, double value){
     struct Node *newnode = createnode(value);
     if (list->size == 0){

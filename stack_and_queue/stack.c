@@ -43,13 +43,6 @@ struct Stack stack_init()
     return stack;
 }
 
-struct Node *get(struct LinkedList *list, int index)
-{
-    if (index < 0 || index >= list->size)
-    {
-        return NULL;
-    }
-}
 
 void pushfront(struct LinkedList *list, double value)
 {
